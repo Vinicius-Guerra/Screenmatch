@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/filmes")
 public class FilmeController {
     @GetMapping
-    public void carregaPaginaFormulario() {
-
+    public String carregaPaginaFormulario() {
+        return "filmes/formulario";
     }
 
 }
