@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "filmes")
 public class Filme {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

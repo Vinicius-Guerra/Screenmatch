@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/filmes")
 public class FilmeController {
+
     @Autowired
     private FilmeRepository repository;
 
@@ -33,22 +34,26 @@ public class FilmeController {
         model.addAttribute("lista", repository.findAll());
         return "filmes/listagem";
     }
+
     @PostMapping
     @Transactional
     public String cadastraFilme(DadosCadastroFilme dados) {
         var filme = new Filme(dados);
+
         repository.save(filme);
 
         return "redirect:/filmes";
     }
+
     @PutMapping
     @Transactional
     public String alteraFilme(DadosAlteracaoFilme dados) {
-       var filme = repository.getReferenceById(dados.id());
-       filme.atualizaDados(dados);
+        var filme = repository.getReferenceById(dados.id());
+        filme.atualizaDados(dados);
 
         return "redirect:/filmes";
     }
+
     @DeleteMapping
     @Transactional
     public String removeFilme(Long id) {
